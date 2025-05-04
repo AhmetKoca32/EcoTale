@@ -1,4 +1,3 @@
-
 /* Base Styles */
 :root {
 	--primary: #9d00ff;
@@ -248,16 +247,13 @@ h6 {
 }
 
 .memory-image {
-	width: 100%;
-	height: 150px;
-	margin-bottom: 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 177.78%; /* 16:9 aspect ratio */
 	overflow: hidden;
-	border-radius: 8px;
-	background: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	margin-bottom: 15px;
 }
 
 .memory-image i {
@@ -472,13 +468,16 @@ footer {
 }
 
 .memory-photo {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 8px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 0;
-	opacity: 0.85;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+	transition: transform 0.3s ease;
+}
+
+.memory-card:hover .memory-photo {
+	transform: scale(1.05);
 }
