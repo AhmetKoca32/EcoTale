@@ -42,11 +42,11 @@
 
 ## 👥 Takım Üyeleri
 
-- Kezban Şevval İnci – JAM-30 Proje Yönetici
-- Ahmet Koca – JAM-30 Developer
-- Barış Berişbek – JAM-30 Developer
-- Hatice Yalçın – JAM-30 Developer
-- Büşra Deveci – JAM-30 Tasarımcı
+- Kezban Şevval İnci – Proje Yönetici
+- Ahmet Koca – Developer
+- Barış Berişbek – Developer
+- Hatice Yalçın – Developer
+- Büşra Deveci – Tasarımcı
 
 
 ---

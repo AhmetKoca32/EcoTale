@@ -1,2 +1,483 @@
-/* style.css */
-/* Projedeki tüm sayfa stillerini içeren CSS dosyası */
+/* Base Styles */
+:root {
+	--primary: #9d00ff;
+	--secondary: #00e5ff;
+	--accent: #ff00e5;
+	--background: #050510;
+	--card-bg: rgba(20, 20, 40, 0.7);
+	--text-primary: #ffffff;
+	--text-secondary: #b8b8ff;
+	--glow-primary: 0 0 10px rgba(157, 0, 255, 0.7),
+		0 0 20px rgba(157, 0, 255, 0.5);
+	--glow-secondary: 0 0 10px rgba(0, 229, 255, 0.7),
+		0 0 20px rgba(0, 229, 255, 0.5);
+	--glow-accent: 0 0 10px rgba(255, 0, 229, 0.7), 0 0 20px rgba(255, 0, 229, 0.5);
+	--card-width: 300px;
+	--card-height: 420px;
+	--carousel-radius: 500px;
+	--transition-speed: 0.5s;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	height: 100%;
+	font-family: "Chakra Petch", sans-serif;
+	background: linear-gradient(135deg, #b9fbc0 0%, #34c759 100%);
+	color: #1b5e20;
+	overflow: hidden; /* Prevent page scrolling */
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.title {
+	font-size: 2.5rem;
+	margin-bottom: 0.5rem;
+	background: linear-gradient(90deg, var(--primary), var(--secondary));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	text-shadow: 0 0 15px rgba(157, 0, 255, 0.5);
+	animation: pulse 3s infinite alternate;
+}
+
+/* Cosmic Background */
+.cosmos-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+	overflow: hidden;
+}
+
+.stars-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: radial-gradient(1px 1px at 25% 25%, white, rgba(0, 0, 0, 0)),
+		radial-gradient(1px 1px at 50% 50%, white, rgba(0, 0, 0, 0)),
+		radial-gradient(2px 2px at 75% 75%, white, rgba(0, 0, 0, 0)),
+		radial-gradient(2px 2px at 100% 100%, white, rgba(0, 0, 0, 0));
+	background-size: 200px 200px, 300px 300px, 400px 400px, 600px 600px;
+	background-repeat: repeat;
+	animation: twinkle 10s linear infinite;
+}
+
+@keyframes twinkle {
+	0% {
+		background-position: 0 0, 0 0, 0 0, 0 0;
+	}
+	100% {
+		background-position: 200px 200px, 300px 300px, 400px 400px, 600px 600px;
+	}
+}
+
+/* Carousel Container */
+.carousel-container {
+	position: relative;
+	width: 100%;
+	height: 700px;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	touch-action: none;
+}
+
+.carousel {
+	position: relative;
+	width: var(--carousel-radius);
+	height: var(--carousel-radius);
+	transform-style: preserve-3d;
+	transition: transform 0.5s ease;
+}
+
+/* Memory Cards */
+.memory-card {
+	position: absolute;
+	width: var(--card-width);
+	height: var(--card-height);
+	left: 50%;
+	top: 50%;
+	margin-left: calc(var(--card-width) / -2);
+	margin-top: calc(var(--card-height) / -2);
+	transform-style: preserve-3d;
+	transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.memory-card.active,
+.memory-card.prev,
+.memory-card.next,
+.memory-card.prev-2,
+.memory-card.next-2,
+.memory-card.prev-3,
+.memory-card.next-3 {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.memory-card.active {
+	transform: translateZ(0) rotateY(0deg);
+	z-index: 7;
+}
+
+.memory-card.prev {
+	transform: translateZ(-100px) translateX(-200px) rotateY(30deg);
+	z-index: 6;
+}
+
+.memory-card.next {
+	transform: translateZ(-100px) translateX(200px) rotateY(-30deg);
+	z-index: 6;
+}
+
+.memory-card.prev-2 {
+	transform: translateZ(-200px) translateX(-350px) rotateY(45deg);
+	z-index: 5;
+}
+
+.memory-card.next-2 {
+	transform: translateZ(-200px) translateX(350px) rotateY(-45deg);
+	z-index: 5;
+}
+
+.memory-card.prev-3 {
+	transform: translateZ(-300px) translateX(-500px) rotateY(60deg);
+	z-index: 4;
+}
+
+.memory-card.next-3 {
+	transform: translateZ(-300px) translateX(500px) rotateY(-60deg);
+	z-index: 4;
+}
+
+.memory-card.far-prev,
+.memory-card.far-next {
+	opacity: 0;
+	transform: translateZ(-400px) translateX(-700px) rotateY(75deg);
+}
+
+.memory-card.far-next {
+	transform: translateZ(-400px) translateX(700px) rotateY(-75deg);
+}
+
+.card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.memory-card:hover .card-inner {
+	transform: translateZ(20px);
+}
+
+.memory-card.flipped .card-inner {
+	transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0 4px 24px 0 #34c75933;
+}
+
+.card-front {
+	background: linear-gradient(135deg, #eaffea 60%, #b9fbc0 100%);
+	border: 2px solid #34c759;
+	transform-style: preserve-3d;
+}
+
+.card-back {
+	background: linear-gradient(135deg, #eaffea 60%, #b9fbc0 100%);
+	border: 2px solid #34c759;
+	transform: rotateY(180deg);
+}
+
+.card-content {
+	padding: 20px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.memory-date {
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.8rem;
+	color: var(--accent);
+	margin-bottom: 10px;
+	text-shadow: 0 0 5px rgba(255, 0, 229, 0.7);
+}
+
+.memory-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	color: #a259e6;
+	text-shadow: 0 2px 8px #a259e655;
+	font-family: "Chakra Petch", "Orbitron", sans-serif;
+}
+
+.memory-image {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 177.78%; /* 16:9 aspect ratio */
+	overflow: hidden;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+
+.memory-image i {
+	color: var(--primary);
+	font-size: 4rem;
+	text-shadow: var(--glow-primary);
+	animation: pulse 3s infinite alternate;
+	z-index: 2;
+}
+
+.glitch-effect {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		45deg,
+		transparent 65%,
+		rgba(157, 0, 255, 0.3) 70%,
+		transparent 75%
+	);
+	background-size: 200% 200%;
+	animation: glitch 3s linear infinite;
+	z-index: 1;
+}
+
+@keyframes glitch {
+	0% {
+		background-position: 0 0;
+	}
+	25% {
+		background-position: 100% 0;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	75% {
+		background-position: 0 100%;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+.memory-preview {
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	margin-bottom: 15px;
+	flex-grow: 1;
+}
+
+.card-back .card-content p {
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	margin-bottom: 20px;
+	line-height: 1.5;
+	flex-grow: 1;
+}
+
+.memory-coordinates {
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.8rem;
+	color: var(--secondary);
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.time-stamp {
+	color: var(--accent);
+}
+
+.card-glow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	pointer-events: none;
+	background: radial-gradient(
+		circle at 50% 50%,
+		rgba(157, 0, 255, 0.1),
+		transparent 70%
+	);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.memory-card:hover .card-glow {
+	opacity: 1;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 20px;
+	z-index: 10;
+}
+
+.control-btn {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: rgba(20, 20, 40, 0.8);
+	border: 2px solid var(--primary);
+	color: var(--text-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
+}
+
+.control-btn i {
+	font-size: 1.5rem;
+	color: var(--primary);
+	text-shadow: 0 0 5px rgba(157, 0, 255, 0.7);
+}
+
+.control-btn:hover {
+	background: rgba(30, 30, 60, 0.9);
+	transform: scale(1.1);
+	box-shadow: 0 0 20px rgba(157, 0, 255, 0.7);
+}
+
+.control-btn:active {
+	transform: scale(0.95);
+}
+
+/* Footer */
+footer {
+	position: relative;
+	z-index: 10;
+}
+
+.instructions {
+	font-size: 0.8rem;
+	color: var(--text-secondary);
+	opacity: 0.7;
+}
+
+/* Animations */
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.8;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+	:root {
+		--card-width: 250px;
+		--card-height: 350px;
+		--carousel-radius: 300px;
+	}
+
+	.title {
+		font-size: 1.8rem;
+	}
+
+	.carousel-container {
+		height: 400px;
+	}
+
+	.memory-card h3 {
+		font-size: 1.2rem;
+	}
+
+	.memory-image {
+		height: 120px;
+	}
+
+	.carousel-controls {
+		bottom: 10px;
+	}
+
+	.control-btn {
+		width: 40px;
+		height: 40px;
+	}
+
+	.control-btn i {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 576px) {
+	:root {
+		--card-width: 220px;
+		--card-height: 320px;
+		--carousel-radius: 250px;
+	}
+
+	.title {
+		font-size: 1.5rem;
+	}
+
+	.carousel-container {
+		height: 350px;
+	}
+}
+
+.memory-photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+	transition: transform 0.3s ease;
+}
+
+.memory-card:hover .memory-photo {
+	transform: scale(1.05);
+}
