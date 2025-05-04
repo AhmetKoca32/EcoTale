@@ -1,2 +1,366 @@
-<!-- index.html -->
-<!-- Projenin ana HTML dosyası. Yapının temelini oluşturur. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Chakra+Petch:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="cosmos-background">
+        <div class="stars-container"></div>
+    </div>
+    
+    <div class="container-fluid h-100 d-flex flex-column">
+        <header class="py-3 text-center">
+            <h1 class="title">ECOTALE</h1>
+        </header>
+    
+        <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
+            <div class="carousel-container">
+                <div class="carousel" id="memory-carousel">
+                    <!-- Memory Card 1 -->
+                    <div class="memory-card" data-memory-id="1">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Yoksulluğa Son</h3>
+                                    <div class="memory-image">
+                                        <img src="assets/img/topic1photo.png" alt="Eller" class="memory-photo" />
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Memory Card 2 -->
+                    <div class="memory-card" data-memory-id="2">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Açlığa Son</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-eye fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Memory Card 3 -->
+                    <div class="memory-card" data-memory-id="3">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Sağlık ve Kaliteli Yaşam</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-book fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Memory Card 4 -->
+                    <div class="memory-card" data-memory-id="4">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Nitelikli Eğitim</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-atom fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Memory Card 5 -->
+                    <div class="memory-card" data-memory-id="5">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Toplumsal Cinsiyet Eşitliği</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-clone fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Memory Card 6 -->
+                    <div class="memory-card" data-memory-id="6">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Temiz Su ve Sanitasyon</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-home fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 7 -->
+                    <div class="memory-card" data-memory-id="7">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Erişilebilir ve Temiz Enerji</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-seedling fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 8 -->
+                    <div class="memory-card" data-memory-id="8">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>İnsana Yakışır İş ve Ekonomik Büyüme</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-clock fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 9 -->
+                    <div class="memory-card" data-memory-id="9">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Sanayi, Yenilikçilik ve Altyapı</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-water fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 10 -->
+                    <div class="memory-card" data-memory-id="10">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Eşitsizliklerin Azaltılması</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-gears fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 11 -->
+                    <div class="memory-card" data-memory-id="11">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Sürdürülebilir Şehirler ve Topluluklar</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-city fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 12 -->
+                    <div class="memory-card" data-memory-id="12">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Sorumlu Tüketim ve Üretim</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-tree fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 13 -->
+                    <div class="memory-card" data-memory-id="13">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>İklim Eylemi</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-sun fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 14 -->
+                    <div class="memory-card" data-memory-id="14">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Sudaki Yaşam</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-mountain fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 15 -->
+                    <div class="memory-card" data-memory-id="15">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Karasal Yaşam</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-water fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 16 -->
+                    <div class="memory-card" data-memory-id="16">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Barış, Adalet ve Güçlü Kurumlar</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-bridge fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Card 17 -->
+                    <div class="memory-card" data-memory-id="17">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-content">
+                                    <h3>Amaçlar için Ortaklıklar</h3>
+                                    <div class="memory-image">
+                                        <i class="fa-solid fa-infinity fa-3x"></i>
+                                        <div class="glitch-effect"></div>
+                                    </div>
+                                    <div class="card-glow"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="carousel-controls">
+                <button id="prev-btn" class="control-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="next-btn" class="control-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </main>
+    
+        <footer class="py-3 text-center">
+            <p class="instructions"></p>
+        </footer>
+    </div>
+</body>
+</html>
