@@ -1,6 +1,6 @@
-# 🌱 Ecotale
+# 🌱 EcoTale
 
-**Ecotale**, çocuklara çevre bilinci kazandırmayı amaçlayan interaktif ve eğitici bir hikaye anlatım uygulamasıdır. Kullanıcıdan alınan yaş ve isim bilgilerine göre çevre temalı hikayeler üretilir. Bu hikaye, bir animasyon karakter eşliğinde **Gemini API** kullanılarak oluşturulur ve **Text-to-Speech (TTS)** teknolojisiyle sesli olarak anlatılır.
+**EcoTale**, çocuklara çevre bilinci kazandırmayı amaçlayan interaktif ve eğitici bir hikaye anlatım uygulamasıdır. Kullanıcıdan alınan yaş ve isim bilgilerine göre çevre temalı hikayeler üretilir. Bu hikaye, bir animasyon karakter eşliğinde **Gemini API** kullanılarak oluşturulur ve **Text-to-Speech (TTS)** teknolojisiyle sesli olarak anlatılır.
 
 ## 🧪 Kullanılan Teknolojiler
 
