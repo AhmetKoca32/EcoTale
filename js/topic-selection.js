@@ -103,13 +103,44 @@ document.addEventListener("DOMContentLoaded", function () {
 		updateCardPositions();
 	}
 
-	// Flip card
+	// Flip card and toggle selection
 	function flipCard(e) {
 		const card = e.currentTarget;
+
+		// Remove 'selected' class from all cards
+		document.querySelectorAll('.memory-card').forEach(c => c.classList.remove('selected'));
+
+		// Add 'selected' class to the clicked card
+		card.classList.add('selected');
+
+		// Flip the card if it's the active one
 		if (card.classList.contains('active')) {
 			card.classList.toggle("flipped");
 		}
+
+		// Sağ alttaki butonu göster
+		const button = document.getElementById('loading-button');
+		button.style.display = 'block';
 	}
+
+	// Butona tıklandığında loading animasyonunu başlat ve sayfayı değiştir
+	document.getElementById('loading-button').addEventListener('click', function() {
+		const loadingAnimation = document.querySelector('.loading');
+		loadingAnimation.style.display = 'block'; // Loading animasyonunu göster
+		
+		// 10 saniye sonra yönlendirme yap (loading animasyonu ile aynı süre)
+		setTimeout(function() {
+			window.location.href = 'story.html'; // Yeni sayfaya yönlendir
+		}, 10000); // 10 saniye sonra yönlendir
+	});
+
+	// Card'lar üzerinde tıklama olayını dinle
+	document.querySelectorAll('.memory-card').forEach(card => {
+		card.addEventListener('click', flipCard);
+	});
+
+
+
 
 	// Drag functions
 	function dragStart(e) {
