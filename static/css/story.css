@@ -105,3 +105,24 @@
     border-color: transparent;
   }
 }
+
+#playBtn {
+  position: fixed;
+  bottom: 20px; /* Ekranın alt kısmına yerleştiriyoruz */
+  left: 50%;
+  transform: translateX(-50%); /* Butonu yatay olarak ortalar */
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 999; /* Butonun üstte olmasını sağlar */
+  transition: background-color 0.3s ease;
+}
+
+#playBtn:hover {
+  background-color: #2980b9; /* Hover durumunda renk değişimi */
+}
+

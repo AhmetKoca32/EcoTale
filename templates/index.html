@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hoş Geldin</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
   <form id="userForm">
@@ -29,7 +29,7 @@
       if (name && age) {
         localStorage.setItem("username", name);
         localStorage.setItem("userage", age); // yaş da saklanabilir
-        window.location.href = "topic-selection.html"; // yönlendirme
+        window.location.href = "/topic-selection"; // topic-selection sayfasına yönlendir
       } else {
         alert("Lütfen adınızı ve yaşınızı girin.");
       }

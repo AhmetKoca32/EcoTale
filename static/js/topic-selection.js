@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		
 		// 10 saniye sonra yönlendirme yap (loading animasyonu ile aynı süre)
 		setTimeout(function() {
-			window.location.href = 'story.html'; // Yeni sayfaya yönlendir
+			window.location.href = 'story'; // Yeni sayfaya yönlendir
 		}, 10000); // 10 saniye sonra yönlendir
 	});
 
