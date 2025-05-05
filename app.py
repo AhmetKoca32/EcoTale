@@ -1,11 +1,19 @@
 from flask import Flask, request, render_template, send_file
 from google.cloud import texttospeech
 import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+# .env dosyasını yükleyin
+load_dotenv()
+
 # Google Cloud servis hesabı dosyası
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ecotale-458915-d2ca0b8ed815.json"
+google_credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+if google_credentials:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_credentials
+else:
+    print("Hata: GOOGLE_APPLICATION_CREDENTIALS çevresel değişkeni eksik!")
 
 # Google TTS istemcisi
 tts_client = texttospeech.TextToSpeechClient()
