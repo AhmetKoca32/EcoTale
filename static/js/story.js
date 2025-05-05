@@ -272,10 +272,10 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const username = localStorage.getItem("username") || "Ziyaretçi";
-    const userAge = localStorage.getItem("age") || "belirtilmedi"; // Yaş bilgisini al
-  
-    // Mesajları daha dinamik hale getir
+  const username = localStorage.getItem("username") || "Ziyaretçi";
+  const userAge = localStorage.getItem("age") || "belirtilmedi"; // Yaş bilgisini al
+
+  // Mesajları daha dinamik hale getir
   const messages = [
     `Merhaba ${username}, ben EcoTale!`,
     `Ben, hikayeler anlatmayı çok seven bir yapay zekayım.`,
@@ -288,53 +288,94 @@ document.addEventListener("DOMContentLoaded", () => {
     "Hikaye başlıyor...",
     "İyi eğlenceler, keyifli dinlemeler!"
   ];
+
+  const instructionsDiv = document.getElementById("instructions");
+  const playBtn = document.getElementById('playBtn');
   
-    const instructionsDiv = document.getElementById("instructions");
-  
-    let index = 0;
-  
-    function showMessage() {
-      if (index < messages.length) {
-        instructionsDiv.style.opacity = "1"; // Mesajı görünür yap
-        instructionsDiv.textContent = ""; // Önceki mesajı temizle
-  
-        // Typewriter efektiyle mesajı yazalım
-        let i = 0;
-        const typingSpeed = 100; // Yazma hızı (ms)
-        const message = messages[index];
-  
-        instructionsDiv.classList.add('typewriter'); // Typewriter efekti ekle
-        instructionsDiv.classList.add('visible'); // Kutuyu görünür yap
-  
-        function typeWriter() {
-          if (i < message.length) {
-            instructionsDiv.textContent += message.charAt(i);
-            i++;
-            setTimeout(typeWriter, typingSpeed);
-          } else {
-            // Mesaj tamamlandığında 2.5 saniye bekle
+  let index = 0;
+
+  // Başlangıçta butonu gizle
+  playBtn.style.display = 'none'; // Buton gizlensin
+
+  showMessage(); // Mesajları göstermeye başla
+
+  function showMessage() {
+    if (index < messages.length) {
+      instructionsDiv.style.opacity = "1"; // Mesajı görünür yap
+      instructionsDiv.textContent = ""; // Önceki mesajı temizle
+
+      // Typewriter efektiyle mesajı yazalım
+      let i = 0;
+      const typingSpeed = 100; // Yazma hızı (ms)
+      const message = messages[index];
+
+      instructionsDiv.classList.add('typewriter'); // Typewriter efekti ekle
+      instructionsDiv.classList.add('visible'); // Kutuyu görünür yap
+
+      function typeWriter() {
+        if (i < message.length) {
+          instructionsDiv.textContent += message.charAt(i);
+          i++;
+          setTimeout(typeWriter, typingSpeed);
+        } else {
+          // Mesaj tamamlandığında 2.5 saniye bekle
+          setTimeout(() => {
+            instructionsDiv.style.opacity = "0"; // Mesajı gizle
+            instructionsDiv.classList.remove('visible'); // Kutuyu gizle
             setTimeout(() => {
-              instructionsDiv.style.opacity = "0"; // Mesajı gizle
-              instructionsDiv.classList.remove('visible'); // Kutuyu gizle
-              setTimeout(() => {
-                index++; // Sonraki mesaja geç
-                showMessage();
-              }, 500); // opacity geçiş süresi
-            }, 2500);
-          }
+              index++; // Sonraki mesaja geç
+              showMessage();
+            }, 500); // opacity geçiş süresi
+          }, 2500);
         }
-  
-        typeWriter();
-      } else {
-        startStory(); // Son mesajdan sonra hikayeyi başlat
       }
+
+      typeWriter();
+    } else {
+      startStory(); // Son mesajdan sonra hikayeyi başlat
     }
+  }
+
+  function startStory() {
+    // Butonu göster
+    playBtn.style.display = 'block'; // Butonu görünür yap
+    playBtn.disabled = false; // Butonu aktif et
+  }
+
   
-    function startStory() {
-      console.log("Hikaye başladı.");
-      // Hikaye başlangıcı için gerekli fonksiyonları burada tetikleyebilirsin.
+
+  // Buton tıklama olayı
+  playBtn.addEventListener('click', async () => {
+    // Hikaye metnini container'dan al
+    const storyText = document.getElementById('container').innerText.trim();
+
+    if (!storyText) {
+      alert("Hikaye metni bulunamadı!");
+      return;
     }
-  
-    showMessage(); // Mesajları göstermeye başla
+
+    try {
+      const response = await fetch('/speak', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: storyText }) 
+      });
+
+      const data = await response.json();
+
+      if (data.audio_url) {
+        const player = document.getElementById('player');
+        player.src = data.audio_url;
+        player.style.display = 'block';
+        player.play();
+      } else {
+        alert("Ses oluşturulamadı.");
+      }
+    } catch (error) {
+      console.error("TTS hatası:", error);
+      alert("Sunucuyla iletişimde sorun oluştu.");
+    }
   });
-  
+});
