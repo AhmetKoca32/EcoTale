@@ -1,1 +1,5 @@
 .env
+# Google Cloud JSON dosyasını gizle
+ecotale-458915-d2ca0b8ed815.json
+
+.gitignore
