@@ -13,3 +13,4 @@ SECRET_KEY=*
 # Virtual environment
 .venv/
 __pycache__/
+
