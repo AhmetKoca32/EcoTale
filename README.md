@@ -6,10 +6,37 @@
 
 - **HTML** – Uygulama arayüzü
 - **CSS** – Tasarım ve stil
-- **JavaScript** – Uygulama mantığı, API entegrasyonları ve animasyon (planlanan)
+- **JavaScript** – Uygulama mantığı, API entegrasyonları ve animasyon
+- **Python/Flask** - Backend, API entegrasyonu
 - **Gemini API** – Yaşa ve konuya göre hikaye üretimi
-- **TTS (Text-to-Speech)** – Hikayeyi sesli hale getirme
+- **Google Cloud TTS (Text-to-Speech)** – Hikayeyi sesli hale getirme
+- **Three.js** - Interaktif 3D animasyonlar
 
+## 🚀 Kurulum ve Çalıştırma
+
+1. Gereksinimleri yükleyin:
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. Ortam değişkenlerini ayarlayın:
+   - GOOGLE_APPLICATION_CREDENTIALS=Google Cloud TTS için hizmet hesabı dosya yolu
+   - GEMINI_API_KEY=Google Gemini API anahtarınız
+   - SECRET_KEY=Flask session güvenlik anahtarı
+
+3. Uygulamayı çalıştırın:
+   ```
+   python app.py
+   ```
+
+## 🔌 Gemini API Entegrasyonu
+
+Gemini API entegrasyonu şu adımları içerir:
+
+1. **API Anahtarı Yapılandırması**: .env dosyasında GEMINI_API_KEY değişkeni ayarlanır
+2. **prompt Optimizasyonu**: Çocuklara uygun, eğitici ve ilgi çekici hikayeler oluşturmak için özel olarak tasarlanmış promptlar
+3. **Hikaye Üretimi**: Seçilen sürdürülebilirlik konusuna göre hikaye oluşturulur
+4. **Seslendirme**: Üretilen hikaye Google TTS ile seslendirilir
 
 ## 📆 Geliştirme Süreci
 

@@ -1,5 +1,16 @@
 .env
 # Google Cloud JSON dosyasını gizle
-ecotale-458915-d2ca0b8ed815.json
+metinden-sese-projesi-2a2b268d0d11.json
+*.json
 
 .gitignore
+
+# Environment variables
+GOOGLE_APPLICATION_CREDENTIALS=*
+GEMINI_API_KEY=*
+SECRET_KEY=*
+
+# Virtual environment
+.venv/
+__pycache__/
+

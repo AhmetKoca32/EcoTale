@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	const cards = document.querySelectorAll(".memory-card");
 	const prevBtn = document.getElementById("prev-btn");
 	const nextBtn = document.getElementById("next-btn");
+	const loadingButton = document.getElementById('loading-button');
 
 	// Variables
 	let currentIndex = 0;
 	let startX, startY;
 	let isDragging = false;
 	let isAnimating = false;
+	let selectedTopicId = null;
 	const totalCards = cards.length;
 	const transitionDuration = 500; // milliseconds
 
@@ -19,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		updateCardPositions();
 
 		// Add event listeners
-		prevBtn.addEventListener("click", handlePrevClick);
-		nextBtn.addEventListener("click", handleNextClick);
+		if (prevBtn) prevBtn.addEventListener("click", handlePrevClick);
+		if (nextBtn) nextBtn.addEventListener("click", handleNextClick);
 		cards.forEach((card) => {
 			card.addEventListener("click", flipCard);
 		});
@@ -35,6 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Keyboard navigation
 		document.addEventListener("keydown", handleKeyDown);
+
+		// Hide the loading button initially
+		if (loadingButton) {
+			loadingButton.style.display = 'none';
+		}
 	}
 
 	// Update card positions and visibility
@@ -113,34 +120,74 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Add 'selected' class to the clicked card
 		card.classList.add('selected');
 
+		// Get the topic ID from the card
+		selectedTopicId = card.dataset.memoryId;
+
 		// Flip the card if it's the active one
 		if (card.classList.contains('active')) {
 			card.classList.toggle("flipped");
 		}
 
-		// Sağ alttaki butonu göster
-		const button = document.getElementById('loading-button');
-		button.style.display = 'block';
+		// Show the loading button
+		if (loadingButton) {
+			loadingButton.style.display = 'block';
+		}
 	}
 
-	// Butona tıklandığında loading animasyonunu başlat ve sayfayı değiştir
-	document.getElementById('loading-button').addEventListener('click', function() {
-		const loadingAnimation = document.querySelector('.loading');
-		loadingAnimation.style.display = 'block'; // Loading animasyonunu göster
-		
-		// 10 saniye sonra yönlendirme yap (loading animasyonu ile aynı süre)
-		setTimeout(function() {
-			window.location.href = 'story'; // Yeni sayfaya yönlendir
-		}, 10000); // 10 saniye sonra yönlendir
-	});
+	// Generate story with Gemini API and redirect to story page
+	async function generateStory(topicId) {
+		try {
+			// Show the loading animation
+			const loadingAnimation = document.querySelector('.loading');
+			if (loadingAnimation) {
+				loadingAnimation.style.display = 'block';
+			}
+			
+			// Call the API to generate the story
+			const response = await fetch('/generate-story', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ topic_id: topicId })
+			});
+			
+			const data = await response.json();
+			
+			if (data.success) {
+				// Redirect to the story page
+				window.location.href = 'story';
+			} else {
+				console.error('Hikaye oluşturma hatası:', data);
+				alert('Hikaye oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.');
+				
+				// Hide loading animation if there's an error
+				if (loadingAnimation) {
+					loadingAnimation.style.display = 'none';
+				}
+			}
+		} catch (error) {
+			console.error('API hatası:', error);
+			alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+			
+			// Hide loading animation if there's an error
+			const loadingAnimation = document.querySelector('.loading');
+			if (loadingAnimation) {
+				loadingAnimation.style.display = 'none';
+			}
+		}
+	}
 
-	// Card'lar üzerinde tıklama olayını dinle
-	document.querySelectorAll('.memory-card').forEach(card => {
-		card.addEventListener('click', flipCard);
-	});
-
-
-
+	// Butona tıklandığında hikaye oluşturma sürecini başlat
+	if (loadingButton) {
+		loadingButton.addEventListener('click', function() {
+			if (selectedTopicId) {
+				generateStory(selectedTopicId);
+			} else {
+				alert('Lütfen bir konu seçin!');
+			}
+		});
+	}
 
 	// Drag functions
 	function dragStart(e) {
