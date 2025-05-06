@@ -1,9 +1,15 @@
 .env
 # Google Cloud JSON dosyasını gizle
-ecotale-458915-d2ca0b8ed815.json
+metinden-sese-projesi-2a2b268d0d11.json
+*.json
 
 .gitignore
 
-GOOGLE_APPLICATION_CREDENTIALS=C:/Users/baris/Desktop/EcoTale/ecotale-458915-d2ca0b8ed815.json
-GEMINI_API_KEY=your_gemini_api_key_here
-SECRET_KEY=any_random_string_for_flask_sessions
+# Environment variables
+GOOGLE_APPLICATION_CREDENTIALS=*
+GEMINI_API_KEY=*
+SECRET_KEY=*
+
+# Virtual environment
+.venv/
+__pycache__/
