@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTale | Çevreci Hikayen</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/splash.css') }}" />
+</head>
+<body class="splash-page">
+  <div class="container">
+    <h1>🌿 EcoTale'e Hoş Geldin</h1>
+    <p class="intro-text">
+      EcoTale, seni doğa dostu alışkanlıklarla tanıştıracak etkileşimli bir hikaye deneyimi sunar.
+    </p>
+
+    <div class="features">
+      <h3>✨ Bu Uygulama ile Neler Yapabilirsin?</h3>
+      <ul>
+        <li>♻️ Günlük çevreci kararlar alarak hikayeni şekillendirebilirsin.</li>
+        <li>📊 Seçimlerinin doğaya etkisini görebilirsin.</li>
+        <li>🎯 Kişiselleştirilmiş senaryolarla farklı sonlara ulaşabilirsin.</li>
+      </ul>
+    </div>
+
+    <div class="sdg-section">
+      <h3>🌐 Hangi Konuları Kapsar?</h3>
+      <p>
+        EcoTale, Birleşmiş Milletler’in belirlediği <strong>17 Sürdürülebilir Kalkınma Amacı</strong> çerçevesinde senaryolar sunar. Bu hedeflerden bazıları:
+      </p>
+      <ul>
+        <li>✅ Yoksulluğa Son</li>
+        <li>✅ Temiz Su ve Sanitasyon</li>
+        <li>✅ İklim Eylemi</li>
+        <li>✅ Sorumlu Üretim ve Tüketim</li>
+        <li>✅ Nitelikli Eğitim</li>
+        <li>✅ Temiz Enerji</li>
+        <li>✅ Toplumsal Cinsiyet Eşitliği</li>
+        <li>... ve daha fazlası!</li>
+      </ul>
+      <p>
+        Bir konu seçerek sen de bu hedeflerden biriyle ilgili etkileşimli bir hikayeye başlayabilirsin.
+      </p>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="start-button">Hikayeye Başla</a>
+  </div>
+</body>
+</html>

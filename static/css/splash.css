@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+*,
+:before,
+:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-image: url(https://raw.githubusercontent.com/CiurescuP/LogIn-Form/main/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 750px;
+  margin: 60px auto;
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(129, 236, 174, 0.4);
+}
+
+h1 {
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffffd9;
+}
+
+.features, .sdg-section {
+  margin-bottom: 30px;
+}
+
+.features h3,
+.sdg-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.features ul,
+.sdg-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.features li::before,
+.sdg-section li::before {
+  content: '🌱 ';
+  margin-right: 5px;
+}
+
+.features li,
+.sdg-section li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #ffffffcb;
+}
+
+.sdg-section {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(129, 236, 174, 0.2);
+}
+
+.start-button {
+  display: block;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 20px;
+  border: 2px solid #ffffff55;
+  transition: background 0.4s ease;
+}
+
+.start-button:hover {
+  background: #629677;
+  border-color: #629677;
+}
