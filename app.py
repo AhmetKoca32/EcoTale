@@ -65,7 +65,7 @@ def synthesize_speech(text):
 
         voice = texttospeech.VoiceSelectionParams(
             language_code="tr-TR",
-            name="tr-TR-Chirp3-HD-Leda",  # Ses ismi burada doğruluğunu kontrol et
+            name="tr-TR-Chirp3-HD-Sadaltager",  # Ses ismi burada doğruluğunu kontrol et
             ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
         )
 
