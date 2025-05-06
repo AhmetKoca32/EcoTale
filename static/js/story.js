@@ -275,6 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const username = localStorage.getItem("username") || "Ziyaretçi";
   const userAge = localStorage.getItem("age") || "belirtilmedi"; // Yaş bilgisini al
 
+
+  
+
   // Mesajları daha dinamik hale getir
   const messages = [
     `Merhaba ${username}, ben EcoTale!`,
@@ -290,12 +293,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const instructionsDiv = document.getElementById("instructions");
-  const playBtn = document.getElementById('playBtn');
+  
   
   let index = 0;
 
-  // Başlangıçta butonu gizle
-  playBtn.style.display = 'none'; // Buton gizlensin
 
   showMessage(); // Mesajları göstermeye başla
 
@@ -337,45 +338,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startStory() {
-    // Butonu göster
-    playBtn.style.display = 'block'; // Butonu görünür yap
-    playBtn.disabled = false; // Butonu aktif et
-  }
-
-  
-
-  // Buton tıklama olayı
-  playBtn.addEventListener('click', async () => {
-    // Hikaye metnini container'dan al
     const storyText = document.getElementById('container').innerText.trim();
-
+  
     if (!storyText) {
       alert("Hikaye metni bulunamadı!");
       return;
     }
-
-    try {
-      const response = await fetch('/speak', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: storyText }) 
-      });
-
-      const data = await response.json();
-
+  
+    // Sesli anlatımı başlat
+    fetch('/speak', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text: storyText })
+    })
+    .then(response => response.json())
+    .then(data => {
       if (data.audio_url) {
         const player = document.getElementById('player');
         player.src = data.audio_url;
-        player.style.display = 'block';
         player.play();
       } else {
         alert("Ses oluşturulamadı.");
       }
-    } catch (error) {
+    })
+    .catch(error => {
       console.error("TTS hatası:", error);
       alert("Sunucuyla iletişimde sorun oluştu.");
-    }
-  });
+    });
+  }
+  
 });
