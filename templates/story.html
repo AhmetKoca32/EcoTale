@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/story.css') }}" />
     <script type="module" src="{{ url_for('static', filename='js/story.js') }}"></script>
-    <title>Document</title>
+    <title>EcoTale - Sürdürülebilir Hikaye</title>
 </head>
 <body>
-<div id="container">
-    <!-- Sabit örnek hikaye -->
-    <p>Bir zamanlar yeşil bir ormanda minik bir tavşan yaşarmış. Bu tavşan her sabah güneşle birlikte uyanır, ormanda zıplayarak dolaşırmış.</p>
+<div id="container" >
+    <!-- Dinamik olarak üretilen hikaye -->
+    <div id="story-text" style="display: none;">
+        {% if story_text %}
+            {{ story_text | safe }}
+        {% else %}
+            <p>Hikaye yükleniyor, lütfen bekleyin...</p>
+        {% endif %}
+    </div>
 </div>
 <div class="glow"></div>
 <div id="patternName">Sphere</div>

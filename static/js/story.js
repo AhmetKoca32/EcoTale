@@ -338,14 +338,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startStory() {
-    const storyText = document.getElementById('container').innerText.trim();
+    const storyTextElement = document.getElementById('story-text');
+    const storyText = storyTextElement ? storyTextElement.textContent.trim() : "";
   
-    if (!storyText) {
+    if (!storyText || storyText.includes("yükleniyor")) {
       alert("Hikaye metni bulunamadı!");
       return;
     }
   
-    // Sesli anlatımı başlat
     fetch('/speak', {
       method: 'POST',
       headers: {
@@ -368,5 +368,6 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Sunucuyla iletişimde sorun oluştu.");
     });
   }
+  
   
 });
