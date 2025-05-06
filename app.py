@@ -18,8 +18,13 @@ else:
 # Google TTS istemcisi
 tts_client = texttospeech.TextToSpeechClient()
 
-# Ana sayfa (index.html)
+
 @app.route('/')
+def splash():
+    return render_template('splash.html')
+
+# Ana sayfa (index.html)
+@app.route('/start')
 def index():
     return render_template('index.html')
 
@@ -72,7 +77,7 @@ def synthesize_speech(text):
         audio_config = texttospeech.AudioConfig(
             audio_encoding=texttospeech.AudioEncoding.MP3,
             effects_profile_id=["small-bluetooth-speaker-class-device"],
-            speaking_rate=1.0
+            speaking_rate=0.90
         )
 
         response = tts_client.synthesize_speech(
